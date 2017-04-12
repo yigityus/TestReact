@@ -4,21 +4,15 @@ import { CHANGE_COLOR } from '../actions'
 function color(state = {color: '#4AB7A2'}, action) {
   switch (action.type) {
     case CHANGE_COLOR:
-      return {...state, color: randomColor()}
+      return {...state, color: action.color}
 
     default:
       return {...state}
   }
 }
-
-function randomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++ ) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+const rootReducer = combineReducers({
+  color
+})
 
 export default color
 
