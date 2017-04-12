@@ -6,7 +6,7 @@ import {
 import { Provider } from 'react-redux'
 import VisibleColorBox from './src/containers/VisibleColorBox'
 import { createStore, applyMiddleware } from 'redux'
-import colors from './src/reducers'
+import reducers from './src/reducers'
 
 function logger({ getState }) {
   return (next) => (action) => {
@@ -24,7 +24,7 @@ function logger({ getState }) {
 }
 
 
-let store = createStore(colors,
+let store = createStore(reducers,
     applyMiddleware(logger)
 )
 
