@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import VisibleColorBox from './src/containers/VisibleColorBox'
 import { createStore, applyMiddleware } from 'redux'
 import reducers from './src/reducers'
+import thunk from 'redux-thunk'
 
 function logger({ getState }) {
   return (next) => (action) => {
@@ -25,7 +26,7 @@ function logger({ getState }) {
 
 
 let store = createStore(reducers,
-    applyMiddleware(logger)
+    applyMiddleware(thunk, logger)
 )
 
 let unsubscribe = store.subscribe(() =>
